@@ -1,2 +1,2 @@
 #!/bin/bash
-rm -r /path/to/directory/*~
+rm -r *~
