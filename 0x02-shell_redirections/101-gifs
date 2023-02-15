@@ -1,3 +1,2 @@
 #!/bin/bash
-find -type f -name "*.git" | rev | cut -d "/" -f 1 | cut -d '.' -f 2- | rev
-| LC_ALL=C sort -f
+find -name '*.git' -type f -printf '%\n' | LC_ALL=C sort -f | rev | cut -c 5- | rev
