@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# This script demonstrates process handling and PID file management
+
+# Define the PID file path
+pid_file="/var/run/myscript.pid"
+
+# Function to handle SIGTERM signal
+sigterm_handler() {
+  echo "I hate the kill command"
+  cleanup_and_exit
+}
+
+# Function to handle SIGINT signal
+sigint_handler() {
+  echo "Y U no love me?!"
+}
+
+# Function to handle SIGQUIT signal
+sigquit_handler() {
+  cleanup_and_exit
+}
+
+# Function to clean up and exit the script
+cleanup_and_exit() {
+  rm "$pid_file"  # Delete the PID file
+  exit 0
+}
+
+# Register signal handlers
+trap sigterm_handler SIGTERM
+trap sigint_handler SIGINT
+trap sigquit_handler SIGQUIT
+
+# Create the PID file with the script's PID
+echo "$$" > "$pid_file"
+
+# Display the message "To infinity and beyond" indefinitely
+while true; do
+  echo "To infinity and beyond"
+  sleep 1
+done

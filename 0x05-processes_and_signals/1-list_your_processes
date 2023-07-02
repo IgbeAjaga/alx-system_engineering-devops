@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script lists the currently running processes
+
+ps -e --forest --format "USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND"
