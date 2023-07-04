@@ -1,8 +1,9 @@
 #!/usr/bin/env ruby
-log_file = ARGV[0]
 
-File.readlines(log_file).each do |line|
-  match = line.match(/\[from:(.*?)\].*?\[to:(.*?)\].*?\[flags:(.*?)\]/)
+regex = /\[from:(.*?)\] \[to:(.*?)\] \[flags:(.*?)\]/
+
+ARGF.each do |line|
+  match = line.match(regex)
   if match
     sender = match[1]
     receiver = match[2]
