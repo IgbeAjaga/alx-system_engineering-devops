@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Script: 0-change_your_home_IP
+# Description: Configures the IP address mappings on an Ubuntu server.
+
+# Backup the original hosts file
+sudo cp /etc/hosts /etc/hosts.bak
+
+# Modify the hosts file to update IP address mappings
+sudo sed -i 's/127.0.0.1/127.0.0.2/g' /etc/hosts
+sudo sed -i 's/157.240.11.35/8.8.8.8/g' /etc/hosts
+
+# Flush the DNS cache
+sudo /etc/init.d/networking restart
+
+echo "IP address mappings have been updated:"
+echo "localhost now resolves to 127.0.0.2"
+echo "facebook.com now resolves to 8.8.8.8"

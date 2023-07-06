@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Script: 1-show_attached_IPs
+# Description: Displays all active IPv4 IPs on the machine
+
+# Use the 'ip' command to retrieve network interface information
+interfaces=$(ip -o addr show | awk '{print $2}')
+
+# Loop through the interfaces and filter out the IPv4 addresses
+for interface in $interfaces; do
+    # Check if the interface has an IPv4 address
+    if [[ $interface =~ ^[^0-9]+$ ]]; then
+        # Extract the IPv4 address from the interface information
+        ip=$(ip -o -4 addr show $interface | awk '{print $4}')
+        echo "$ip"
+    fi
+done
