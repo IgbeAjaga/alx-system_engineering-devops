@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # This script displays listening ports along with the associated program names
 
 # Display listening TCP ports
@@ -9,3 +8,4 @@ netstat -tln | awk 'NR>2 {print $4, $7}'
 # Display listening UDP ports
 echo "Listening UDP ports:"
 netstat -uln | awk 'NR>2 {print $4, $7}'
+
