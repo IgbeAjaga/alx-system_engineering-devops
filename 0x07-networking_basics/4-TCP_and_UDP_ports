@@ -1,9 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 
-# Display listening TCP ports
-echo "Listening TCP ports:"
-netstat -tln | grep '^tcp' | awk '{print $4, $NF}' | sed 's/:::/\*/' | sed 's/::1:/localhost:/'
-
-# Display listening UDP ports
-echo "Listening UDP ports:"
-netstat -uln | grep '^udp' | awk '{print $4, $NF}' | sed 's/:::/\*/' | sed 's/::1:/localhost:/'
+# TCP and UDP ports listening
+netstat -lp
