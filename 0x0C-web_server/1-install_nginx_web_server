@@ -1,7 +1,23 @@
 #!/usr/bin/env bash
 
 # Install Nginx using apt-get with '-y' flag for automatic confirmation
-apt-get update
-apt-get install -y nginx
-echo "Holberton School" > /var/www/html/index.html
-service nginx start
+sudo apt-get update
+sudo apt-get install -y nginx
+
+# Create a basic HTML file with "Hello World!" content
+echo "Hello World!" | sudo tee /var/www/html/index.html
+
+# Check if Nginx is already listening on port 80, else modify its default configuration
+if ! sudo lsof -i :80 | grep LISTEN; then
+    sudo sed -i 's/listen 80 default_server;/listen 80;/' /etc/nginx/sites-available/default
+fi
+
+# Restart Nginx without using systemctl
+sudo service nginx restart
+
+# Ensure Nginx is running
+if sudo service nginx status | grep "active (running)"; then
+    echo "Nginx is running."
+else
+    echo "Nginx is not running."
+fi
