@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# This script connects to a server using SSH with a private key
+
+# Use ssh single-character flags
+# Connect using the private key ~/.ssh/school
+# Use the user "ubuntu"
+
+# -i flag specifies the private key file
+# -l is not used as per the requirements
+# The -o flag is used to disable strict host key checking
+
+ssh -i ~/.ssh/school -o StrictHostKeyChecking=no ubuntu@"$1"
