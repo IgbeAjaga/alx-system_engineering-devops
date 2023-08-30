@@ -1,5 +1,19 @@
-apt-get update
-apt-get -y install nginx
-ufw allow 'Nginx HTTP'
-echo "Hello World!" > /var/www/html/index.nginx-igbe.html
-/etc/init.d/nginx start
+#!/usr/bin/env bash
+
+# Install Nginx using apt-get with '-y' flag for automatic confirmation
+sudo apt-get update
+sudo apt-get install -y nginx
+
+echo "Hello World!" | sudo tee /var/www/html/index.html
+
+if ! sudo lsof -i :80 | grep LISTEN; then
+    sudo sed -i 's/listen 80 default_server;/listen 80;/' /etc/nginx/sites-available/default
+fi
+
+sudo service nginx restart
+
+if sudo service nginx status | grep "active (running)"; then
+    echo "Nginx is running."
+else
+    echo "Nginx is not running."
+fi
