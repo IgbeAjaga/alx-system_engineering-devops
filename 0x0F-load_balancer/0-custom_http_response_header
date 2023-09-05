@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# This script configures Nginx on a new Ubuntu machine.
+
+# Update the system
+sudo apt-get update -y
+
+# Install Nginx
+sudo apt-get install nginx -y
+
+# Create a custom Nginx configuration file
+echo 'server {
+    listen 80;
+    server_name _;
+
+    add_header X-Served-By $HOSTNAME;
+
+    location / {
+        proxy_pass http://localhost:80;
+    }
+}' | sudo tee /etc/nginx/sites-available/custom_header
+
+# Create a symbolic link to enable the configuration
+sudo ln -s /etc/nginx/sites-available/custom_header /etc/nginx/sites-enabled/
+
+# Remove the default Nginx configuration
+sudo rm /etc/nginx/sites-enabled/default
+
+# Test Nginx configuration
+sudo nginx -t
+
+# Reload Nginx to apply the changes
+sudo systemctl reload nginx
