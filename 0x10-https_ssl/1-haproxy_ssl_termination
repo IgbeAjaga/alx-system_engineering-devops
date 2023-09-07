@@ -1,0 +1,9 @@
+frontend www-frontend
+    bind *:443 ssl crt /etc/letsencrypt/live/your_domain/fullchain.pem
+    mode http
+    option httplog
+    default_backend www-backend
+
+backend www-backend
+    mode http
+    server web-server 127.0.0.1:80
