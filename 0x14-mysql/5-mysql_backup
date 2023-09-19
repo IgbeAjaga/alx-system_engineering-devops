@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# Check if the password argument is provided
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <mysql_password>"
+    exit 1
+fi
+
+# Define the password and timestamp
+MYSQL_PASSWORD="$1"
+TIMESTAMP=$(date +%d-%m-%Y)
+
+# Backup MySQL databases to a dump file
+mysqldump -u root -p"${MYSQL_PASSWORD}" --all-databases > backup.sql
+
+# Create a compressed archive
+tar -czvf "${TIMESTAMP}.tar.gz" backup.sql
+
+# Clean up the dump file
+rm backup.sql
+
+echo "Backup completed: ${TIMESTAMP}.tar.gz"
