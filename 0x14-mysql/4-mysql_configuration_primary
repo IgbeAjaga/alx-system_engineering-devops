@@ -1,0 +1,46 @@
+# MySQL primary configuration file
+
+[mysql]
+# Basic settings
+port = 3306
+socket = /var/run/mysqld/mysqld.sock
+
+[mysqld]
+# Server ID should be unique for each MySQL server in the replication setup
+server-id = 1
+
+# Data directory
+datadir = /var/lib/mysql
+
+# Log files
+log_error = /var/log/mysql/error.log
+log_bin = /var/log/mysql/mysql-bin.log
+
+# Replication settings
+binlog_do_db = tyrell_corp
+
+# Recommended for production systems
+innodb_buffer_pool_size = 256M
+
+# Custom settings (adjust as needed)
+key_buffer_size = 16M
+max_allowed_packet = 16M
+thread_stack = 192K
+thread_cache_size = 8
+
+# Disabling remote access, bind-address is commented out
+# bind-address = 127.0.0.1
+
+# Disabling symbolic-links is recommended to prevent security risks
+symbolic-links = 0
+
+# Character set
+character-set-server = utf8mb4
+
+[mysqld_safe]
+# Error log location
+log_error = /var/log/mysql/mysql-error.log
+
+# Security settings (adjust as needed)
+!include /etc/mysql/mysql.cnf
+!includedir /etc/mysql/conf.d/
