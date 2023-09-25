@@ -35,6 +35,7 @@ if __name__ == "__main__":
             task_id = task.get('id')
             task_title = task.get('title')
             task_completed = task.get('completed')
-            csv_writer.writerow([user_id, user_name, task_completed, task_title])
+            csv_writer.writerow(
+                    [user_id, user_name, task_completed, task_title])
 
     print("Data exported to {} successfully.".format(filename))
