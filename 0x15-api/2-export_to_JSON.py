@@ -6,7 +6,8 @@ from sys import argv
 
 if __name__ == "__main__":
     employee_id = argv[1]
-    user_url = "https://jsonplaceholder.typicode.com/users/{}".format(employee_id)
+    user_url = "https://jsonplaceholder.typicode.com/users/{}".format(
+            employee_id)
     tasks_url = "https://jsonplaceholder.typicode.com/todos?userId={}".format(
         employee_id)
 
