@@ -14,14 +14,16 @@ if __name__ == "__main__":
     employee_id = sys.argv[1]
 
     # Fetch user data
-    user_url = 'https://jsonplaceholder.typicode.com/users/{}'.format(employee_id)
+    user_url = 'https://jsonplaceholder.typicode.com/users/{}'.format(
+            employee_id)
     response_user = requests.get(user_url)
     user_data = response_user.json()
     user_id = user_data.get('id')
     user_name = user_data.get('username')
 
-    # Fetch TODO data
-    todo_url = 'https://jsonplaceholder.typicode.com/todos?userId={}'.format(employee_id)
+    # Fetch data
+    todo_url = 'https://jsonplaceholder.typicode.com/todos?userId={}'.format(
+            employee_id)
     response_todo = requests.get(todo_url)
     todo_list = response_todo.json()
 
