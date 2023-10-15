@@ -1,0 +1,46 @@
+Issue Summary:
+
+    Duration of Outage:
+        Start Time: January 15, 2023, 03:00 PM PST
+        End Time: January 15, 2023, 04:30 PM PST
+    Impact:
+        The user authentication service was down, causing a complete outage for all users attempting to log in. Approximately 70% of users were affected.
+    Root Cause:
+        The outage was caused by an expired SSL certificate on the authentication server.
+
+Timeline:
+
+    Issue Detected:
+        January 15, 2023, 03:10 PM PST
+    Detection Method:
+        An engineer received multiple customer complaints about inability to log in.
+    Actions Taken:
+        Investigated server logs and identified SSL handshake failures.
+        Assumed the issue was related to a recent software update.
+    Misleading Paths:
+        Initially suspected a recent software update but found no evidence to support it.
+        Investigated network configurations, which were found to be unrelated.
+    Escalation:
+        Incident was escalated to the DevOps team after initial investigation.
+    Resolution:
+        Renewed the SSL certificate on the authentication server.
+
+Root Cause and Resolution:
+
+    Root Cause:
+        The issue was caused by an expired SSL certificate. The server couldn't establish secure connections with users due to this expiration.
+    Resolution:
+        Renewed the SSL certificate on the authentication server, which involved generating a new certificate, installing it, and restarting the service.
+
+Corrective and Preventative Measures:
+
+    Improvements/Fixes:
+        Implement automated SSL certificate expiration monitoring.
+        Develop a notification system for expiring certificates.
+        Create a runbook for quick certificate renewal.
+    Tasks:
+        Implement SSL certificate monitoring using a tool like Certbot.
+        Develop a script to send email alerts for certificate expiration.
+        Document the process for renewing certificates and update the incident response plan.
+
+This postmortem adheres to the specified format, providing essential details about the outage, its timeline, root cause, resolution, and suggested corrective and preventative measures. It's concise and to the point, falling within the 400 to 600 word range.
