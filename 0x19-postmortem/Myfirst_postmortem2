@@ -1,0 +1,35 @@
+Title: "The SSL Certificate Fiasco: An Adventure in Secure(ly Locked) Logins"
+
+Introduction:
+
+In the fast-paced world of tech, it's not often that an incident stands out like a sore thumb, demanding attention. We invite you to embark on a humorous journey through the recent SSL certificate expiration debacle that left us all with locked doors and no keys. Buckle up, and let's dive into the chaos that ensued!
+
+Issue Summary:
+
+    Duration of Outage:
+        Start Time: January 15, 2023, 03:00 PM PST
+        End Time: January 15, 2023, 04:30 PM PST
+    Impact:
+        Picture this: your favorite online service suddenly ghosts you. Approximately 70% of users, frustrated and locked out, went looking for a new digital BFF.
+    Root Cause:
+        The culprit behind this escapade? An expired SSL certificate, the arch-nemesis of secure logins.
+
+The Story Unfolds:
+
+Let's set the scene – a quiet afternoon when our engineers least expected it. Our very own SSL certificate, supposedly loyal to the end, chose this moment to throw in the towel. The scene: chaos. The solution: well, let's talk about that.
+
+Root Cause and Resolution:
+
+    Root Cause:
+        The SSL certificate had its own "midlife crisis" moment, expiring on us and leaving our users in the lurch.
+    Resolution:
+        Our heroes, a.k.a. the DevOps team, swiftly renewed the certificate. Crisis averted!
+
+Lessons Learned:
+
+As we wrap up this thrilling episode of "SSL Wars: The Phantom Expiry," we leave you with some pearls of wisdom:
+
+    Implement automated certificate expiration alerts, so you don't miss the party.
+    Develop a 'certificate renewal runbook,' because life is too short for expired SSL certificates.
+
+In conclusion, we hope this postmortem added a dash of humor and a pinch of relatability to the world of tech. Remember, we're all in this together, navigating the digital realm's twists and turns, one SSL certificate at a time.
